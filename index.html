@@ -1,0 +1,234 @@
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+    <!-- Configuración fundamental y metadatos --> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="description" content="Sitio web corporativo oficial de TechCorp Soluciones. Innovación y desarrollo de software empresarial."> 
+    <meta name="author" content="Estudiante de Ingeniería / Laboratorio de Código"> 
+    <title>TechCorp Soluciones | Inicio</title>
+    
+    <!-- Hojas de Estilo CSS3 --> 
+    <style> 
+        /* Reseteo básico: elimina márgenes por defecto del navegador */ 
+        * { margin:0; padding: 0; box-sizing: border-box; } 
+        
+        /* Configuración del fondo general y tipografía del cuerpo */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; color: #333333; line-height: 1.6; } 
+        
+        /* Estilos de la cabecera corporativa y navegación */ 
+        header {background-color: #1a365d; color: #ffffff; padding: 20px 5%; display: flex;justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; } 
+        nav ul { list-style: none; display: flex; gap: 20px; } 
+        nav a { color: #ffffff; text-decoration: none; font-weight: 600; transition: color 0.3s ease; } 
+        nav a:hover { color: #63b3ed; } 
+        
+        /* Estructura del contenido principal con márgenes internos */ 
+        main { max-width:1200px; margin: 40px auto; padding: 0 20px; } 
+        
+        /* Secciones semánticas */ 
+        .hero { background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; text-align: center; } 
+        h1 { color: #1a365d; margin-bottom: 15px; font-size: 2.5rem; } 
+        h2 { color: #2b6cb0; margin-bottom: 20px; text-align: center; font-size: 2rem; } 
+        
+        /* Optimización de Imagen */ 
+        .hero-image { width: 100%; max-width: 800px; height: auto; border-radius: 8px; margin: 20px 0; box-shadow:0 4px 8px rgba(0,0,0,0.1); } 
+        
+        /* Efecto de Marquesina con CSS3 */
+        .marquee-container { overflow: hidden; background-color: #ebf8ff; border-left: 4px solid #2b6cb0; border-right: 4px solid #2b6cb0; padding: 15px 0; margin-bottom: 40px; border-radius: 4px; white-space: nowrap; position: relative; } 
+        .marquee-content { display: inline-block; font-weight: 600; color: #2c5282; animation: scroll-left 20s linear infinite; } 
+        @keyframes scroll-left { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+        
+        /* Línea divisoria de secciones */ 
+        hr.section-divider { border: 0; height: 2px; background: linear-gradient(to right, #f4f6f9, #2b6cb0, #f4f6f9); margin: 50px 0; } 
+        
+        /* Grid de Servicios y Enlaces */ 
+        .services, .link-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px, 1fr)); gap: 25px; }
+        article { background: #ffffff; padding: 30px; border-radius: 8px; border-top: 4px solid #2b6cb0; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.3s ease; } 
+        article:hover { transform: translateY(-5px); } 
+        article h3 { color: #1a365d; margin-bottom: 15px; } 
+        
+        /* Listas organizadas */
+        .service-list, .link-list { margin-top: 15px; padding-left: 20px; list-style-type: square; color: #4a5568; } 
+        .service-list li, .link-list li { margin-bottom: 8px; } 
+        
+        /* Estilos de Hipervínculos en el contenido */ 
+        .link-list a { color: #2b6cb0; text-decoration: none; font-weight: 500; transition: color 0.2s ease; } 
+        .link-list a:hover { color: #1a365d; text-decoration: underline; }
+        
+        /* Iframe */ 
+        iframe.map-frame { width: 100%; height: 300px; border: none; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } 
+        
+        /* Bloques de texto - Blockquote */ 
+        .corporate-quote { background-color: #f8fafc; border-left: 5px solid #2b6cb0; padding: 20px; margin: 30px 0; font-style: italic; color: #475569; border-radius: 0 8px 8px 0; } 
+        
+        /* Botón Volver arriba */
+        .btn-up { display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #2b6cb0; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; } 
+        .btn-up:hover { background-color: #1a365d; } 
+        
+        /* Pie de página corporativo */ 
+        footer { background-color: #0f172a; color: #94a3b8; text-align: center; padding: 30px 20px; margin-top:60px; font-size: 0.9rem; }
+
+        /* ESTILOS DEL FORMULARIO DE CRÉDITO (PROYECTO FINAL) */
+        .credit-form { max-width: 600px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 8px; border-top: 4px solid #2b6cb0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; color: #1a365d; margin-bottom: 8px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: inherit; font-size: 1rem; transition: border-color 0.3s; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #2b6cb0; box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.2); }
+        .btn-submit { width: 100%; padding: 12px; background-color: #2b6cb0; color: white; border: none; border-radius: 4px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease; }
+        .btn-submit:hover { background-color: #1a365d; }
+    </style> 
+</head> 
+<body> 
+    <!-- Cabecera principal y navegación del sitio --> 
+    <header> 
+        <div class="logo">
+            <strong>TechCorp Soluciones</strong> 
+        </div> 
+        <!-- Navegación con Anclas Internas --> 
+        <nav aria-label="Navegación principal"> 
+            <ul> 
+                <li><a href="#inicio">Inicio</a></li> 
+                <li><a href="#servicios">Servicios</a></li> 
+                <li><a href="#nosotros">La Empresa</a></li> 
+                <li><a href="#solicitud">Solicitud de Crédito</a></li>
+                <li><a href="#contacto">Contacto y Enlaces</a></li>
+            </ul> 
+        </nav> 
+    </header> 
+    
+    <!-- Contenido principal semántico --> 
+    <main> 
+        <!-- Sección de bienvenida / Hero corporate -->
+        <section id="inicio" class="hero"> 
+            <h1>Innovación Tecnológica para su Empresa</h1> 
+            <p>Desarrollamos infraestructura y soluciones digitales escalables utilizando arquitecturas web modernas y limpias, garantizando el máximo rendimiento para su negocio.</p> 
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Conexiones tecnológicas globales y redes empresariales" class="hero-image" loading="lazy"> 
+        </section>
+        
+        <!-- Marquesina Visual CSS3 (Moderno) --> 
+        <div class="marquee-container" aria-hidden="true"> 
+            <div class="marquee-content">🚀 Impulsando el futuro digital | 💻 Desarrollo de Software | 🔒 Ciberseguridad Avanzada | 🌐 Soluciones en la Nube | 📊 Consultoría TI Estratégica </div>
+        </div> 
+        <hr class="section-divider"> 
+        
+        <!-- Sección de Servicios estructurada con artículos --> 
+        <section id="servicios" aria-labelledby="titulo-servicios">
+            <h2 id="titulo-servicios">Nuestros Servicios Empresariales</h2> 
+            <div class="services"> 
+                <article>
+                    <h3>Consultoría Digital</h3> 
+                    <p>Analizamos y optimizamos los procesos tecnológicos de su empresa para mejorar la competitividad en el mercado actual.</p> 
+                </article> 
+                <article> 
+                    <h3>Desarrollo Web a Medida</h3> 
+                    <p>Creación de plataformas web bajo estándares modernos HTML5 y CSS3, libres de código obsoleto y totalmente adaptables.</p> 
+                    <ul class="service-list">
+                        <li>Diseño Responsivo (Mobile First)</li> 
+                        <li>Integración de APIs REST</li> 
+                        <li>Optimización SEO Técnico</li> 
+                    </ul>
+                </article> 
+                <article> 
+                    <h3>Ciberseguridad y Redes</h3>
+                    <p>Protección de activos digitales e implementación de infraestructuras seguras para garantizar la continuidad operativa de su corporación.</p>
+                </article> 
+            </div> 
+        </section> 
+        <hr class="section-divider"> 
+        
+        <!-- Sección de Filosofía -->
+        <section id="nosotros"> 
+            <h2>Nuestra Filosofía</h2>
+            <blockquote class="corporate-quote"> "Creemos firmemente que la tecnología no debe ser un obstáculo, sino el puente principal hacia la evolución, la eficiencia y el éxito sostenido de cada modelo de negocio." </blockquote> 
+        </section> 
+        <hr class="section-divider"> 
+
+        <!-- FORMULARIO DE CAPTURA DE DATOS (PROYECTO FINAL) -->
+        <section id="solicitud" aria-labelledby="titulo-solicitud">
+            <h2 id="titulo-solicitud">Solicitud de Crédito Corporativo</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Complete el siguiente formulario para evaluar su requerimiento. Todos los campos son obligatorios.</p>
+
+            <form action="#" method="POST" class="credit-form">
+                <div class="form-group">
+                    <label for="empresa">Razón Social de la Empresa:</label>
+                    <input type="text" id="empresa" name="empresa" required minlength="3" placeholder="Ej. Inversiones y Tecnología C.A.">
+                </div>
+
+                <div class="form-group">
+                    <label for="rif">Número de RIF / Identificación Fiscal:</label>
+                    <input type="text" id="rif" name="rif" required pattern="^[V|E|J|G]-?\d{8}-?\d$" title="Formato válido: J-12345678-9" placeholder="Ej. J-12345678-9">
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico Corporativo:</label>
+                    <input type="email" id="correo" name="correo" required placeholder="contacto@suempresa.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo_credito">Tipo de Crédito Solicitado:</label>
+                    <select id="tipo_credito" name="tipo_credito" required>
+                        <option value="">-- Seleccione una opción --</option>
+                        <option value="linea_rotativa">Línea de Crédito Rotativa</option>
+                        <option value="corto_plazo">Financiamiento a Corto Plazo</option>
+                        <option value="adquisicion_activos">Adquisición de Infraestructura TI</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="monto">Monto Solicitado (USD):</label>
+                    <input type="number" id="monto" name="monto" required min="1000" max="50000" step="100" placeholder="Ej. 5000">
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Solicitud</button>
+            </form>
+        </section>
+        <hr class="section-divider">
+
+        <!-- Sección de Contacto, Enlaces e Integración de Frames --> 
+        <section id="contacto">
+            <h2>Directorio de Enlaces y Contacto</h2> 
+            <p style="text-align: center; margin-bottom: 30px;">Acceda a nuestros recursos internos o consulte los entes regulatorios pertinentes.</p>
+            <div class="link-grid"> 
+                <!-- Enlaces Locales --> 
+                <article> 
+                    <h3>Recursos Internos</h3> 
+                    <p>Documentación y normativas de TechCorp:</p> 
+                    <ul class="link-list">
+                        <li><a href="recursos/politicas_privacidad.html">Políticas de Privacidad</a></li> 
+                        <li><a href="docs/manual_aduanero_interno.pdf">Manual de Procedimientos</a></li> 
+                        <li><a href="intranet/login.php">Portal de Empleados</a></li> 
+                    </ul> 
+                </article> 
+                <!-- Enlaces Externos --> 
+                <article> 
+                    <h3>Control Fiscal y Aduanero</h3> 
+                    <p>Portales institucionales de interés corporativo:</p> 
+                    <ul class="link-list"> 
+                        <li><a href="http://www.seniat.gob.ve/" target="_blank" rel="noopener noreferrer">SENIAT - Venezuela</a></li> 
+                        <li><a href="http://www.wcoomd.org/es.aspx" target="_blank" rel="noopener noreferrer">Organización Mundial de Aduanas (OMA)</a></li> 
+                        <li><a href="https://www.mercosur.int/" target="_blank" rel="noopener noreferrer">Portal Oficial del MERCOSUR</a></li> 
+                    </ul> 
+                </article> 
+            </div>
+            
+            <!-- Integración de Frames (Iframe) --> 
+            <article style="margin-top: 25px;"> 
+                <h3>Nuestra Sede Principal</h3> 
+                <p>Implementación de un marco incorporado para visualización de mapas institucionales:</p> 
+                <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15693.364234515286!2d-66.877843!3d10.49089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5edb0e633d7b%3A0xc07a216f9fbf4a90!2sCaracas%2C%20Distrito%20Capital!5e0!3m2!1ses!2sve!4v1699999999999!5m2!1ses!2sve" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación corporativa"> </iframe> 
+            </article> 
+            
+            <!-- Ancla de retorno al inicio --> 
+            <div style="text-align: center;"> 
+                <a href="#inicio" class="btn-up">↑ Volver al Inicio</a> 
+            </div> 
+        </section> 
+    </main> 
+    
+    <!-- Pie de página con metadatos de cierre --> 
+    <footer> 
+        <p>&copy; 2026 TechCorp Soluciones S.A. Todos los derechos reservados.</p>
+        <p>Laboratorio de Desarrollo Web - Estructuración Semántica HTML5, CSS3 y Arquitectura de Enlaces</p> 
+    </footer> 
+</body> 
+</html>
